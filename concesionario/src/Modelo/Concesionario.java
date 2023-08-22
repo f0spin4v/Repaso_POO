@@ -44,10 +44,17 @@ public class Concesionario {
         this.listaVehiculosVendidos =new ArrayList<Vehiculo>();
     }
     //_________________________________metodo que me añade un administrador a la lista__________________________________
+    /**
+     * Este metodo se encarga de agregar un administrador creado al Array administrador.
+     * @param administrador parametro requerido por el metodo para añadir un administrador.
+     */
     public void agregarAdministrador (Administrador administrador){
         listaAdministrador.add(administrador);
     }
     //__________________________________Metodo que elimina un vehiculo disponible_______________________________________
+    /**
+     * Este metodo es el encargador de eliminar un vehiculo de mi mi listado de vehiculos disponibles.
+     */
     public void eliminarVehiculo (){
         listarVehiculosDisponibles();
         String placa = JOptionPane.showInputDialog("ingresa la placa del vehiculo que quiere Eliminar:");
@@ -63,6 +70,10 @@ public class Concesionario {
         listaVehiculosDisponibles.remove(pocisionFinal);
     }
     //__________________________________Metodo que genera reporte de ventas_____________________________________________
+    /**
+     * Metodo que me genera las ventas totales realizadas en el concesionario, para esto recorre
+     * la informacion del Array vehiculos vendidos.
+     */
     public void ventasTotales (){
         double ventasTotales=0;
         for (Vehiculo vehiculo:listaVehiculosVendidos) {
@@ -74,6 +85,10 @@ public class Concesionario {
         listarVehiculosVendido();
     }
     //__________________________________Metodo que Actualiza un vehiculo disponible_____________________________________
+    /**
+     * Este metodo me permite actualizar la informacion de un vehiculo.
+     * @param placa es necesario para conocer el vehiculo al cual se le va a modificar la informacion.
+     */
     public void actualizarVehiculo(String placa){
         boolean existe= false;
         Vehiculo vehiculoAux=null;
@@ -174,6 +189,9 @@ public class Concesionario {
         }
     }
     //__________________________________Metodo que me indica el stock actual____________________________________________
+    /**
+     * Este metodo nos permite conocer los vehiculos que tiene actualmente el concesionario.
+     */
     public void stockVehiculos(){
 
         int numCamiones=0, numAutos=0, numMotos=0;
@@ -198,6 +216,10 @@ public class Concesionario {
         mostrarVehiculosDisponibles();
     }
     //__________________________________Metodo para vender el vehiculo__________________________________________________
+    /**
+     * este metodo nos permite cambiar de esta una caracteristica propia de vehiculo, y almacenar el vehiculo
+     * en un listado de ventas
+     */
     public void venderVehiculo (){
         listarVehiculosDisponibles();
         System.out.println();
@@ -215,12 +237,18 @@ public class Concesionario {
         listaVehiculosDisponibles.remove(pocisionFinal);
     }
     //__________________________________Metodo para mostrar vehiculos disponibles_______________________________________
+    /**
+     * Metodo que nos permite mostrar mediante un for los vehiculos disponibles en la lista de disponibles.
+     */
     public void mostrarVehiculosDisponibles(){
         for (Vehiculo vehiculo:listaVehiculosDisponibles) {
             mostrarVehiculo(vehiculo);
         }
     }
     //__________________________________Metodo que muestra vehiculos vendidos___________________________________________
+    /**
+     * Metodo que nos permite ver los vehiculos de la lista vehiculos vendidos.
+     */
     public void listarVehiculosVendido (){
         System.out.println("____________________ESTOS SON LOS VEHICULOS VENDIDOS____________________");
         for ( Vehiculo vehiculo:this.listaVehiculosVendidos){
@@ -228,10 +256,18 @@ public class Concesionario {
         }
     }
     //__________________________________Metodo para agregar vehiculo a la lista de disponibles__________________________
+    /**
+     * metodo que nos permite agregar un vehiculo a la lista de vehiculos disponibles.
+     * @param vehiculo es necesario este parametro para almacenar la informacion de el en el Array.
+     */
     public void agregarVehiculo (Vehiculo vehiculo){
         this.listaVehiculosDisponibles.add(vehiculo);
     }
-    //__________________________________Metodo menu para registro de vehiculos__________________________
+    //__________________________________Metodo menu para registro de vehiculos__________________________________________
+    /**
+     * este metodo nos realiza la consulta sobre que tipo de vehiculo quiero registrar
+     * adocional a esto me lo agrega a la lista de vehiculos disponibles.
+     */
     public void registroVehiculo (){
         Vehiculo vehiculo;
         String tipoVehiculo = JOptionPane.showInputDialog("Que tipo de vehiculo vas a registrar: \n (MOTO-AUTO-CAMION)");
@@ -253,6 +289,12 @@ public class Concesionario {
         }
     }
     //________________________________________________Metodo para registrar un Camion___________________________________
+
+    /**
+     * estos metodos de registro capturan la informacion para realizar el registro del vehiculo, cada regristro
+     * es unico ya que moto, auto, camion, poseen atributos unicos que los diferencian.
+     * @return estos retornan un vehiculo segun sus caracteristicas de ingreso.
+     */
     private Camion registrarCamion() {
         String valor_placa = JOptionPane.showInputDialog("ingresa la placa:");
         String valor_marca = JOptionPane.showInputDialog("Ingresa la marca: ");
@@ -308,6 +350,9 @@ public class Concesionario {
         return auto_aux;
     }
     //_____________________________Metodo que muestra vehiculos disponibles_____________________________________________
+    /**
+     * Metodo que nos permite mostrar mediante un for los vehiculos disponibles en la lista de disponibles.
+     */
     public void listarVehiculosDisponibles (){
         System.out.println("____________________ESTOS SON LOS VEHICULOS DISPONIBLES____________________");
         for ( Vehiculo vehiculo:this.listaVehiculosDisponibles){
@@ -315,6 +360,10 @@ public class Concesionario {
         }
     }
     //_______________________________________Metodo menu para buscar el vehiculo________________________________________
+
+    /**
+     * Este metodo nos permite  buscar un vehiculo segun una de las caracteristicas propias que comparten.
+     */
     public void buscarVehiculo (){
         String valor_busqueda = JOptionPane.showInputDialog("Por cual itemdeseas realizar la busqueda: \nIndique " +
                 "1) Placa, 2)Marca, 3)Referencia, 4)Modelo, 5)Precio");
@@ -376,6 +425,12 @@ public class Concesionario {
         }
     }
     //_____________________________SubMetodo que permiten buscar el vehiculo por Precio_________________________________
+
+    /**
+     * este metodo va a comparar con mi lista de disponibles los vehiculos que sean del mismo precio.
+     * @param precio recibe este parametro con el fin de hacer la comparacion
+     * @return me retorna una lista de los  vehiculos que tienen el mismo precio.
+     */
     public ArrayList<Vehiculo> buscarVehiculoPrecio(double precio){
         ArrayList <Vehiculo> listaVehiculosPrecios= new ArrayList<Vehiculo>();
         System.out.println("____________________ESTOS SON LOS VEHICULOS DISPONIBLES POR PRECIO____________________");
@@ -387,6 +442,11 @@ public class Concesionario {
         return listaVehiculosPrecios;
     }
     //_____________________________SubMetodo que permiten buscar el vehiculo por Referencia_____________________________
+    /**
+     * este metodo va a comparar con mi lista de disponibles los vehiculos que sean del mismo referencia.
+     * @param referencia recibe este parametro con el fin de hacer la comparacion
+     * @return me retorna una lista de los  vehiculos que tienen la misma referencia.
+     */
     public ArrayList<Vehiculo> buscarVehiculoReferencia(String referencia){
         ArrayList <Vehiculo> listaVehiculosReferencia= new ArrayList<Vehiculo>();
         System.out.println("____________________ESTOS SON LOS VEHICULOS DISPONIBLES POR REFERENCIA____________________");
@@ -398,6 +458,11 @@ public class Concesionario {
         return listaVehiculosReferencia;
     }
     //_____________________________SubMetodo que permiten buscar el vehiculo por Modelo_________________________________
+    /**
+     * este metodo va a comparar con mi lista de disponibles los vehiculos que sean del mismo modelo.
+     * @param modelo recibe este parametro con el fin de hacer la comparacion
+     * @return me retorna una lista de los  vehiculos que tienen el mismo modelo.
+     */
     public ArrayList <Vehiculo> buscarVehiculoModelo(String modelo){
         ArrayList <Vehiculo> listaVehiculosModelo= new ArrayList<Vehiculo>();
         System.out.println("____________________ESTOS SON LOS VEHICULOS DISPONIBLES POR MODELO____________________");
@@ -409,6 +474,11 @@ public class Concesionario {
         return listaVehiculosModelo;
     }
     //_____________________________SubMetodo que permiten buscar el vehiculo por Marca__________________________________
+    /**
+     * este metodo va a comparar con mi lista de disponibles los vehiculos que sean del mismo marca.
+     * @param marca recibe este parametro con el fin de hacer la comparacion
+     * @return me retorna una lista de los  vehiculos que tienen la misma marca.
+     */
     public ArrayList <Vehiculo> buscarVehiculoMarca(String marca){
          ArrayList <Vehiculo> listaVehiculosMarca= new ArrayList<Vehiculo>();
         System.out.println("____________________ESTOS SON LOS VEHICULOS DISPONIBLES POR MARCA____________________");
@@ -420,6 +490,11 @@ public class Concesionario {
         return listaVehiculosMarca;
     }
     //_____________________________SubMetodo que permiten buscar el vehiculo por Placa__________________________________
+    /**
+     * este metodo va a comparar con mi lista de disponibles el vehiculo que que tenga la misma placa.
+     * @param placa recibe este parametro con el fin de hacer la comparacion
+     * @return me retorna un vehiculo, el cual es el que referencie con la placa.
+     */
     public Vehiculo buscarVehiculoPlaca(String placa){
         Vehiculo vehiculo = null;
         System.out.println("____________________VEHICULO ENCONTRADO POR PLACA____________________");
@@ -432,6 +507,10 @@ public class Concesionario {
         return null;
     }
     //_______________________________________Metodo que permite mostrar el vehiculo_____________________________________
+    /**
+     * Este metodo me muestra en consolo y por medio de ventanas los vehiculos
+     * @param vehiculo para mirar la informacion ingresada de este.
+     */
     public void mostrarVehiculo (Vehiculo vehiculo){
         JOptionPane.showMessageDialog(null,"El vehiculo es: "+vehiculo.obtenerTipoVehiculo()+
                 "\nLa placa es: "+ vehiculo.getPlaca()+"\nLa marca es: "+ vehiculo.getMarca()+
